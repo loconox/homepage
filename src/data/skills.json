@@ -1,0 +1,18 @@
+[
+  {
+    "category": "Backend",
+    "items": ["PHP", "Symfony", "API Platform", "Silex", "Zend", "PHPUnit"]
+  },
+  {
+    "category": "Architecture",
+    "items": ["Architecture Hexagonale", "Clean Code", "SOLID", "ADR", "SCRUM"]
+  },
+  {
+    "category": "Frontend",
+    "items": ["React", "Angular", "JavaScript", "TypeScript"]
+  },
+  {
+    "category": "DevOps & Cloud",
+    "items": ["Docker", "Kubernetes", "GitLab CI/CD", "Jenkins", "Linux", "Cloud"]
+  }
+]

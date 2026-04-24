@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Tech Lead & Architecture",
+    "description": "Coordination technique d'équipe, design d'architecture hexagonale, rédaction d'ADR, bonnes pratiques clean code et SOLID. J'accompagne vos développeurs pour monter en qualité durablement.",
+    "icon": "lightbulb"
+  },
+  {
+    "title": "Développement Backend PHP",
+    "description": "Développement d'APIs et d'applications métier avec Symfony et API Platform. Architecture solide, tests PHPUnit unitaires et fonctionnels, code maintenable et documenté.",
+    "icon": "code"
+  },
+  {
+    "title": "DevOps & Infrastructure",
+    "description": "Dockerisation des applications, mise en place d'infrastructures Kubernetes et de pipelines CI/CD avec Jenkins ou GitLab. Déploiement continu et fiable en environnement cloud.",
+    "icon": "server"
+  }
+]

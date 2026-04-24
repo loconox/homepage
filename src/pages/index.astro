@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import profile from '../data/profile.json';
+---
+
+<Layout title={`${profile.name} — ${profile.title}`} description={profile.bio}>
+  <Header />
+  <main>
+    <Hero />
+    <Services />
+    <Experience />
+    <Skills />
+    <Education />
+    <Contact />
+  </main>
+  <footer class="py-8 border-t border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 flex items-center justify-between text-xs text-gray-700">
+      <span><span class="text-cyan-400/50">~</span> {profile.name}</span>
+      <span>© {new Date().getFullYear()}</span>
+    </div>
+  </footer>
+</Layout>

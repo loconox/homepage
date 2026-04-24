@@ -1,0 +1,30 @@
+[
+  {
+    "school": "Epita (Kremlin-Bicêtre)",
+    "degree": "Diplôme d'expert en ingénierie informatique — bac+5",
+    "start": "2007",
+    "end": "2010",
+    "note": "En alternance à Siemens Mobility (Châtillon)"
+  },
+  {
+    "school": "IUT de Vannes",
+    "degree": "DUT Informatique — option Génie Logiciel",
+    "start": "2005",
+    "end": "2007",
+    "note": ""
+  },
+  {
+    "school": "Lycée Chevrollier (Angers)",
+    "degree": "Baccalauréat Scientifique — mention Assez Bien",
+    "start": "",
+    "end": "2005",
+    "note": "Spécialisation Sciences de l'Ingénieur"
+  },
+  {
+    "school": "SensioLabs",
+    "degree": "Formation : Développement web avec Symfony 2",
+    "start": "",
+    "end": "Juin 2014",
+    "note": "4 jours"
+  }
+]

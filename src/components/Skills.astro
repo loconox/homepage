@@ -1,0 +1,29 @@
+---
+import skills from '../data/skills.json';
+---
+
+<section id="skills" class="py-24 border-t border-gray-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-lg font-bold text-gray-100 mb-3">
+        <span class="text-cyan-400">// </span>Compétences
+      </h2>
+      <div class="h-px bg-gray-800"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8">
+      {skills.map((group) => (
+        <div>
+          <p class="text-xs text-gray-600 uppercase tracking-widest mb-4">{group.category}</p>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <span class="px-2.5 py-1 text-xs border border-gray-700 text-gray-400 hover:border-cyan-400/50 hover:text-cyan-400 transition-colors cursor-default">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

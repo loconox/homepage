@@ -1,0 +1,50 @@
+[
+  {
+    "company": "EGERIE",
+    "role": "Tech Lead",
+    "start": "Mars 2023",
+    "end": "Déc 2025",
+    "description": "Coordination du chapter back, design d'une architecture hexagonale avec API Platform, rédaction d'ADR en guild. Accompagnement technique des développeurs, bonnes pratiques clean code et SOLID.",
+    "technologies": ["PHP", "Symfony", "Silex", "API Platform", "PHPUnit", "React"]
+  },
+  {
+    "company": "Symetri",
+    "role": "Développeur Fullstack / DevOps",
+    "start": "Jan 2018",
+    "end": "Mars 2023",
+    "description": "Développement backend PHP Symfony/Zend, frontend Angular et application mobile Android. Dockerisation, infrastructure Kubernetes, mise en place de pipelines CI/CD Jenkins puis GitLab. Administration cloud OBS.",
+    "technologies": ["PHP", "Symfony", "Zend", "Angular", "Docker", "Kubernetes", "Jenkins", "GitLab", "MSSql"]
+  },
+  {
+    "company": "Avenue du Web",
+    "role": "Développeur Fullstack",
+    "start": "Mai 2014",
+    "end": "Déc 2017",
+    "description": "Développement backend PHP Symfony 2, système de commentaires live web via WebSocket, frontend JS. Tests PHPUnit, plateforme d'intégration continue Jenkins.",
+    "technologies": ["PHP", "Symfony", "MySQL", "JavaScript", "WebSocket", "Jenkins"]
+  },
+  {
+    "company": "Outscale",
+    "role": "Développeur Fullstack",
+    "start": "Juin 2013",
+    "end": "Mars 2014",
+    "description": "Développement et intégration de logiciels de reporting et de facturation. Documentation technique et administration ponctuelle du SI.",
+    "technologies": ["PHP", "SCRUM"]
+  },
+  {
+    "company": "Ubisoft",
+    "role": "Data Manager",
+    "start": "Août 2011",
+    "end": "Fév 2013",
+    "description": "Support technique multi-plateformes, tests qualité sur les jeux en développement, gestion de l'archivage des versions et de l'espace documentaire.",
+    "technologies": []
+  },
+  {
+    "company": "Siemens Mobility",
+    "role": "Administrateur Systèmes Unix/Linux",
+    "start": "Oct 2007",
+    "end": "Oct 2010",
+    "description": "Apprentissage 3 ans. Mise en place d'un parc Suse Linux, supervision du data center via Cacti et Nagios, développement d'outils d'aide à la production.",
+    "technologies": ["Linux", "Suse", "Cacti", "Nagios"]
+  }
+]
