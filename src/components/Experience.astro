@@ -26,8 +26,20 @@ import experiences from '../data/experiences.json';
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
               <h3 class="font-semibold text-gray-100 text-sm">{exp.role}</h3>
               <span class="text-cyan-400 text-xs">{exp.company}</span>
+              {exp.companyType && (
+                <span class="px-1.5 py-0.5 text-[10px] uppercase tracking-wider border border-gray-700 text-gray-500">
+                  {exp.companyType}
+                </span>
+              )}
             </div>
-            <p class="text-xs text-gray-500 leading-relaxed mb-3">{exp.description}</p>
+            <ul class="space-y-1 mb-3">
+              {exp.highlights.map((item) => (
+                <li class="flex gap-2 text-xs text-gray-500 leading-relaxed">
+                  <span class="text-cyan-400/60 select-none">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
             {exp.technologies.length > 0 && (
               <div class="flex flex-wrap gap-1.5">
                 {exp.technologies.map((tech) => (
