@@ -3,52 +3,53 @@ import profile from '../data/profile.json';
 ---
 
 <section id="hero" class="min-h-screen flex items-center pt-14">
-  <div class="max-w-5xl mx-auto px-6 py-24 w-full">
-    <div class="max-w-2xl">
-      {profile.photo && (
-        <div class="mb-8">
-          <img
-            src={profile.photo}
-            alt={profile.name}
-            width="80"
-            height="80"
-            class="w-20 h-20 rounded-full object-cover border-2 border-cyan-400/40 grayscale hover:grayscale-0 transition-all duration-500"
-          />
+    <div class="max-w-5xl mx-auto px-6 py-24 w-full">
+        <div class="max-w-2xl">
+            {profile.photo && (
+                    <div class="mb-8">
+                        <img
+                                src={profile.photo}
+                                alt={profile.name}
+                                width="80"
+                                height="80"
+                                class="w-20 h-20 rounded-full object-cover border-2 border-cyan-400/40 grayscale hover:grayscale-0 transition-all duration-500"
+                        />
+                    </div>
+            )}
+
+            {profile.availability && (
+                    <p class="text-xs text-gray-500 mb-10">
+                        <span class="text-cyan-400">$</span> status --check
+                        <br/>
+                        <span class="text-emerald-400 mt-1 inline-block">▶ {profile.availability}</span>
+                    </p>
+            )}
+
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-100 leading-tight mb-3">
+                <span class="text-cyan-400 select-none mr-2">&gt;</span>{profile.name}<span
+                    class="cursor-blink text-cyan-400">_</span>
+            </h1>
+
+            <p class="text-lg text-cyan-400 mb-1">{profile.title}</p>
+
+            <p class="text-sm text-gray-500 mb-10 leading-relaxed max-w-xl">
+                {profile.bio}
+            </p>
+
+            <div class="flex items-center gap-3 flex-wrap">
+                <a
+                        href="#contact"
+                        class="px-5 py-2.5 bg-cyan-400 text-gray-950 text-sm font-semibold hover:bg-cyan-300 transition-colors"
+                >
+                    ./contact
+                </a>
+                <a
+                        href="#services"
+                        class="px-5 py-2.5 border border-gray-700 text-gray-400 text-sm hover:border-cyan-400/50 hover:text-cyan-400 transition-all"
+                >
+                    ./services
+                </a>
+            </div>
         </div>
-      )}
-
-      {profile.availability && (
-        <p class="text-xs text-gray-500 mb-10">
-          <span class="text-cyan-400">$</span> status --check
-          <br />
-          <span class="text-emerald-400 mt-1 inline-block">▶ {profile.availability}</span>
-        </p>
-      )}
-
-      <h1 class="text-4xl sm:text-5xl font-bold text-gray-100 leading-tight mb-3">
-        <span class="text-cyan-400 select-none mr-2">&gt;</span>{profile.name}<span class="cursor-blink text-cyan-400">_</span>
-      </h1>
-
-      <p class="text-lg text-cyan-400 mb-1">{profile.title}</p>
-
-      <p class="text-sm text-gray-500 mb-10 leading-relaxed max-w-xl">
-        {profile.bio}
-      </p>
-
-      <div class="flex items-center gap-3 flex-wrap">
-        <a
-          href="#contact"
-          class="px-5 py-2.5 bg-cyan-400 text-gray-950 text-sm font-semibold hover:bg-cyan-300 transition-colors"
-        >
-          ./contact
-        </a>
-        <a
-          href="#services"
-          class="px-5 py-2.5 border border-gray-700 text-gray-400 text-sm hover:border-cyan-400/50 hover:text-cyan-400 transition-all"
-        >
-          ./services
-        </a>
-      </div>
     </div>
-  </div>
 </section>

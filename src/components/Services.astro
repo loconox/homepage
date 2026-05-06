@@ -2,32 +2,32 @@
 import services from '../data/services.json';
 
 const icons: Record<string, string> = {
-  code: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
-  server: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v.75a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25v-.75M21.75 11.25v1.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25v-1.5M21.75 6.75v.75a2.25 2.25 0 0 1-2.25 2.25h-15A2.25 2.25 0 0 1 2.25 7.5v-.75M21.75 6.75a2.25 2.25 0 0 0-2.25-2.25h-15a2.25 2.25 0 0 0-2.25 2.25" /></svg>`,
-  lightbulb: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>`,
+    code: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
+    server: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v.75a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25v-.75M21.75 11.25v1.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25v-1.5M21.75 6.75v.75a2.25 2.25 0 0 1-2.25 2.25h-15A2.25 2.25 0 0 1 2.25 7.5v-.75M21.75 6.75a2.25 2.25 0 0 0-2.25-2.25h-15a2.25 2.25 0 0 0-2.25 2.25" /></svg>`,
+    lightbulb: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>`,
 };
 ---
 
 <section id="services" class="py-24 border-t border-gray-800">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="mb-12">
-      <h2 class="text-lg font-bold text-gray-100 mb-3">
-        <span class="text-cyan-400">// </span>Services
-      </h2>
-      <div class="h-px bg-gray-800"></div>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-4">
-      {services.map((service, i) => (
-        <div class="border border-gray-800 p-6 hover:border-cyan-400/40 hover:bg-gray-900/50 transition-all group">
-          <p class="text-xs text-gray-600 mb-4 group-hover:text-cyan-400/60 transition-colors">
-            ./{String(i + 1).padStart(2, '0')}
-          </p>
-          <div class="text-cyan-400 mb-3" set:html={icons[service.icon] ?? icons.code} />
-          <h3 class="font-semibold text-gray-100 mb-2 text-sm">{service.title}</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">{service.description}</p>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="mb-12">
+            <h2 class="text-lg font-bold text-gray-100 mb-3">
+                <span class="text-cyan-400">// </span>Services
+            </h2>
+            <div class="h-px bg-gray-800"></div>
         </div>
-      ))}
+
+        <div class="grid md:grid-cols-3 gap-4">
+            {services.map((service, i) => (
+                    <div class="border border-gray-800 p-6 hover:border-cyan-400/40 hover:bg-gray-900/50 transition-all group">
+                        <p class="text-xs text-gray-600 mb-4 group-hover:text-cyan-400/60 transition-colors">
+                            ./{String(i + 1).padStart(2, '0')}
+                        </p>
+                        <div class="text-cyan-400 mb-3" set:html={icons[service.icon] ?? icons.code}/>
+                        <h3 class="font-semibold text-gray-100 mb-2 text-sm">{service.title}</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">{service.description}</p>
+                    </div>
+            ))}
+        </div>
     </div>
-  </div>
 </section>

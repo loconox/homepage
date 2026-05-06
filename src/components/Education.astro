@@ -3,27 +3,27 @@ import education from '../data/education.json';
 ---
 
 <section id="education" class="py-24 border-t border-gray-800">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="mb-12">
-      <h2 class="text-lg font-bold text-gray-100 mb-3">
-        <span class="text-cyan-400">// </span>Formation
-      </h2>
-      <div class="h-px bg-gray-800"></div>
-    </div>
-
-    <div class="space-y-0">
-      {education.map((item) => (
-        <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-8 py-5 border-b border-gray-800/50 last:border-0">
-          <p class="text-xs text-gray-600 md:pt-0.5">
-            {item.start ? `${item.start} — ${item.end}` : item.end}
-          </p>
-          <div>
-            <p class="text-sm font-medium text-gray-100">{item.degree}</p>
-            <p class="text-xs text-cyan-400 mt-0.5">{item.school}</p>
-            {item.note && <p class="text-xs text-gray-600 mt-1">{item.note}</p>}
-          </div>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="mb-12">
+            <h2 class="text-lg font-bold text-gray-100 mb-3">
+                <span class="text-cyan-400">// </span>Formation
+            </h2>
+            <div class="h-px bg-gray-800"></div>
         </div>
-      ))}
+
+        <div class="space-y-0">
+            {education.map((item) => (
+                    <div class="grid md:grid-cols-[200px_1fr] gap-2 md:gap-8 py-5 border-b border-gray-800/50 last:border-0">
+                        <p class="text-xs text-gray-600 md:pt-0.5">
+                            {item.start ? `${item.start} — ${item.end}` : item.end}
+                        </p>
+                        <div>
+                            <p class="text-sm font-medium text-gray-100">{item.degree}</p>
+                            <p class="text-xs text-cyan-400 mt-0.5">{item.school}</p>
+                            {item.note && <p class="text-xs text-gray-600 mt-1">{item.note}</p>}
+                        </div>
+                    </div>
+            ))}
+        </div>
     </div>
-  </div>
 </section>
