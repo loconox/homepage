@@ -20,13 +20,14 @@ jobs:
 
       - run: npm run build
 
-      - name: Deploy via rsync
+      - name: Deploy via scp
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
-          rsync -az --delete \
-            -e "ssh -i ~/.ssh/deploy_key" \
-            dist/ \
-            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}/"
+          SSH_OPTS="-i ~/.ssh/deploy_key"
+          SSH_DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
+          TARGET="${{ secrets.SSH_TARGET_PATH }}"
+          ssh $SSH_OPTS "$SSH_DEST" "rm -rf '$TARGET'/* '$TARGET'/.[!.]* '$TARGET'/..?* 2>/dev/null; mkdir -p '$TARGET'"
+          scp $SSH_OPTS -r dist/. "$SSH_DEST:$TARGET/"
