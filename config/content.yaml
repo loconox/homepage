@@ -1,0 +1,135 @@
+parameters:
+    app.content:
+        profile:
+            name: 'Jérémie Libeau'
+            title: "Tech Lead & développeur backend, spécialisé dans l'architecture logicielle"
+            bio: "J'accompagne les équipes dans leurs choix techniques, la conception d'API scallable et la montée en qualité de leurs applications."
+            email: 'job@jeremielibeau.fr'
+            linkedin: 'https://www.linkedin.com/in/j%%C3%%A9r%%C3%%A9mie-libeau-1553b4257/'
+            github: 'https://github.com/loconox'
+            appointment: 'https://nuage.astrolabe.coop/apps/calendar/appointment/fm8qjEyosz9c'
+            cv_url: 'https://github.com/loconox/latexcv/releases/download/latest/cv_jeremie_libeau.pdf'
+            photo: '/images/profile.jpg'
+            availability: 'Disponible'
+            quote:
+                text: 'The only way to go fast, is to go well.'
+                author: 'Robert C. Martin, Clean Architecture'
+
+        services:
+            - title: 'Tech Lead & Architecture'
+              description: "Coordination technique d'équipe, design d'architecture hexagonale, rédaction d'ADR, bonnes pratiques clean code et SOLID. J'accompagne vos développeurs pour monter en qualité durablement."
+              icon: 'lightbulb'
+            - title: 'Développement Backend PHP'
+              description: "Développement d'APIs et d'applications métier avec Symfony et API Platform. Architecture solide, tests PHPUnit unitaires et fonctionnels, code maintenable et documenté."
+              icon: 'code'
+            - title: 'DevOps & Infrastructure'
+              description: "Dockerisation des applications, mise en place d'infrastructures Kubernetes et de pipelines CI/CD avec Jenkins ou GitLab. Déploiement continu et fiable en environnement cloud."
+              icon: 'server'
+
+        experiences:
+            - company: 'EGERIE'
+              companyType: 'Scale-up'
+              role: 'Tech Lead'
+              start: 'Mars 2023'
+              end: 'Déc 2025'
+              highlights:
+                  - 'Coordination du chapter back'
+                  - "Design d'une architecture hexagonale avec API Platform"
+                  - "Rédaction d'ADR en guild"
+                  - 'Accompagnement technique des développeurs'
+                  - 'Promotion des bonnes pratiques clean code et SOLID'
+              technologies: ['PHP', 'Symfony', 'Silex', 'API Platform', 'PHPUnit', 'React']
+
+            - company: 'Symetri'
+              companyType: 'PME'
+              role: 'Développeur Fullstack / DevOps'
+              start: 'Jan 2018'
+              end: 'Mars 2023'
+              highlights:
+                  - 'Développement backend PHP (Symfony / Zend)'
+                  - 'Développement frontend Angular et application mobile Android'
+                  - "Dockerisation et exploitation d'une infrastructure Kubernetes"
+                  - 'Mise en place de pipelines CI/CD Jenkins puis GitLab'
+                  - "Administration de l'environnement cloud OBS"
+              technologies: ['PHP', 'Symfony', 'Zend', 'Angular', 'Docker', 'Kubernetes', 'Jenkins', 'GitLab', 'MSSql']
+
+            - company: 'Avenue du Web'
+              companyType: 'TPE'
+              role: 'Développeur Fullstack'
+              start: 'Mai 2014'
+              end: 'Déc 2017'
+              highlights:
+                  - 'Développement backend PHP Symfony 2'
+                  - "Conception d'un système de commentaires live via WebSocket"
+                  - 'Développement frontend JavaScript'
+                  - 'Tests automatisés PHPUnit'
+                  - "Mise en place d'une plateforme d'intégration continue Jenkins"
+              technologies: ['PHP', 'Symfony', 'MySQL', 'JavaScript', 'WebSocket', 'Jenkins']
+
+            - company: 'Outscale'
+              companyType: 'Start-up'
+              role: 'Développeur Fullstack'
+              start: 'Juin 2013'
+              end: 'Mars 2014'
+              highlights:
+                  - "Développement et intégration d'un logiciel de reporting"
+                  - "Développement d'un logiciel de facturation"
+                  - 'Rédaction de documentation technique'
+                  - 'Administration ponctuelle du SI'
+              technologies: ['PHP', 'SCRUM']
+
+            - company: 'Ubisoft'
+              companyType: 'Grand compte'
+              role: 'Data Manager'
+              start: 'Août 2011'
+              end: 'Fév 2013'
+              highlights:
+                  - 'Support technique multi-plateformes'
+                  - 'Tests qualité sur les jeux en développement'
+                  - "Gestion de l'archivage des versions"
+                  - "Gestion de l'espace documentaire"
+              technologies: []
+
+            - company: 'Siemens Mobility'
+              companyType: 'Grand compte'
+              role: 'Administrateur Systèmes Unix/Linux'
+              start: 'Oct 2007'
+              end: 'Oct 2010'
+              highlights:
+                  - 'Apprentissage en alternance sur 3 ans'
+                  - "Mise en place d'un parc Suse Linux"
+                  - 'Supervision du data center via Cacti et Nagios'
+                  - "Développement d'outils d'aide à la production"
+              technologies: ['Linux', 'Suse', 'Cacti', 'Nagios']
+
+        skills:
+            - category: 'Backend'
+              items: ['PHP', 'Symfony', 'API Platform', 'Silex', 'Zend', 'PHPUnit']
+            - category: 'Architecture'
+              items: ['Architecture Hexagonale', 'Clean Code', 'SOLID', 'ADR', 'SCRUM']
+            - category: 'Frontend'
+              items: ['React', 'Angular', 'JavaScript', 'TypeScript']
+            - category: 'DevOps & Cloud'
+              items: ['Docker', 'Kubernetes', 'GitLab CI/CD', 'Jenkins', 'Linux', 'Cloud']
+
+        education:
+            - school: 'Epita (Kremlin-Bicêtre)'
+              degree: "Diplôme d'expert en ingénierie informatique — bac+5"
+              start: '2007'
+              end: '2010'
+              note: 'En alternance à Siemens Mobility (Châtillon)'
+            - school: 'IUT de Vannes'
+              degree: 'DUT Informatique — option Génie Logiciel'
+              start: '2005'
+              end: '2007'
+              note: ''
+            - school: 'Lycée Chevrollier (Angers)'
+              degree: 'Baccalauréat Scientifique — mention Assez Bien'
+              start: ''
+              end: '2005'
+              note: "Spécialisation Sciences de l'Ingénieur"
+            - school: 'SensioLabs'
+              degree: 'Formation : Développement web avec Symfony 2'
+              start: ''
+              end: 'Juin 2014'
+              note: '4 jours'

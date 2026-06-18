@@ -1,43 +1,90 @@
-# Astro Starter Kit: Minimal
+# jeremielibeau.fr
+
+Page d'accueil personnelle / CV en ligne — propulsée par **Symfony 7** + **Tailwind CSS 4** (via Symfonycasts Tailwind Bundle et AssetMapper), pré-rendue en HTML statique pour le déploiement.
+
+## Structure
+
+```
+.
+├── assets/                  # Sources JS + CSS (Tailwind input)
+│   ├── app.js
+│   ├── email-obfuscation.js
+│   └── styles/app.css
+├── bin/console
+├── config/
+│   ├── content.yaml         # Contenu du site (profil, services, expériences…)
+│   ├── packages/
+│   └── services.yaml
+├── public/                  # Assets statiques (favicons, images) + index.php
+├── src/
+│   ├── Command/BuildStaticCommand.php
+│   ├── Content/ContentProvider.php
+│   └── Controller/HomeController.php
+├── templates/
+│   ├── base.html.twig
+│   ├── index.html.twig
+│   ├── _partials/header.html.twig
+│   └── sections/
+│       ├── hero.html.twig
+│       ├── quote.html.twig
+│       ├── services.html.twig
+│       ├── experience.html.twig
+│       ├── skills.html.twig
+│       ├── education.html.twig
+│       └── contact.html.twig
+└── dist/                    # Sortie du build statique (générée)
+```
+
+## Pré-requis
+
+- PHP 8.3+
+- Composer 2
+- [Symfony CLI](https://symfony.com/download) (optionnel mais pratique)
+
+## Installation
 
 ```sh
-npm create astro@latest -- --template minimal
+composer install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Le binaire Tailwind est téléchargé automatiquement au premier `tailwind:build`.
 
-## 🚀 Project Structure
+## Développement
 
-Inside of your Astro project, you'll see the following folders and files:
+```sh
+# Lancer le serveur Symfony
+symfony serve
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Dans un autre terminal, watcher Tailwind
+php bin/console tailwind:build --watch
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Ouvrir [http://localhost:8000](http://localhost:8000).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Édition du contenu
 
-Any static assets, like images, can be placed in the `public/` directory.
+Tout le contenu éditorial (profil, services, expériences, compétences, formation) est centralisé dans `config/content.yaml`. Aucune base de données.
 
-## 🧞 Commands
+> ⚠️ Les caractères `%` dans les valeurs YAML doivent être doublés (`%%`) car Symfony les interprète comme des références de paramètres.
 
-All commands are run from the root of the project, from a terminal:
+## Build statique pour la production
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```sh
+composer install --no-dev --optimize-autoloader
+php bin/console tailwind:build --minify --env=prod
+php bin/console asset-map:compile --env=prod
+php bin/console app:build-static --env=prod
+```
 
-## 👀 Want to learn more?
+Le dossier `dist/` contient alors :
+- `index.html` pré-rendu
+- `assets/` (CSS + JS hashés)
+- `favicon.*`, `images/`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Servable directement par n'importe quel hébergeur statique.
+
+## Déploiement
+
+GitHub Actions (`.github/workflows/deploy.yml`) construit et envoie `dist/` via SCP à chaque push sur `main`.
+
+Secrets requis : `SSH_PRIVATE_KEY`, `SSH_HOST`, `SSH_USER`, `SSH_TARGET_PATH`.

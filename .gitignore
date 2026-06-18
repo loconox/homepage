@@ -1,24 +1,26 @@
-# build output
-dist/
-# generated types
-.astro/
 
-# dependencies
-node_modules/
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
 
+# Static build output
+/dist/
 
-# environment variables
-.env
-.env.production
+# IDE
+/.idea/
 
-# macOS-specific files
-.DS_Store
-
-# jetbrains setting folder
-.idea/
+# Local logs / artifacts
+/deploy-deploy-2.log
+/github_deploy
+/github_deploy.pub

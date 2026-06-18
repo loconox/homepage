@@ -1,0 +1,8 @@
+twig:
+    file_name_pattern: '*.twig'
+    globals:
+        content: '@App\Content\ContentProvider'
+
+when@test:
+    twig:
+        strict_variables: true

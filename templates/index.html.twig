@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include '_partials/header.html.twig' %}
+    <main>
+        {% include 'sections/hero.html.twig' %}
+        {% include 'sections/quote.html.twig' %}
+        {% include 'sections/services.html.twig' %}
+        {% include 'sections/experience.html.twig' %}
+        {% include 'sections/skills.html.twig' %}
+        {% include 'sections/education.html.twig' %}
+        {% include 'sections/contact.html.twig' %}
+    </main>
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-6 flex items-center justify-between text-xs text-gray-700">
+            <span><span class="text-cyan-400/50">~</span> {{ content.profile.name }}</span>
+            <span>© {{ "now"|date("Y") }}</span>
+        </div>
+    </footer>
+{% endblock %}
