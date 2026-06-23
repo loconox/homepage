@@ -26,9 +26,10 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress --verbose
         env:
-          APP_ENV: prod
+            APP_ENV: prod
+            COMPOSER_PROCESS_TIMEOUT: 600
 
       - name: Build
         run: make prod
