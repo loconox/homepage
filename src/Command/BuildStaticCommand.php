@@ -57,6 +57,32 @@ final class BuildStaticCommand extends Command
         $fs->dumpFile($distDir . '/index.html', (string)$response->getContent());
         $io->success(sprintf('dist/index.html écrit (%d octets).', \strlen((string)$response->getContent())));
 
+        $io->section('Rendu de la page vcard');
+        $request = Request::create('/card', 'GET');
+        $response = $this->kernel->handle($request);
+
+        if (200 !== $response->getStatusCode()) {
+            $io->error(sprintf('Le rendu a renvoyé un statut HTTP %d.', $response->getStatusCode()));
+
+            return Command::FAILURE;
+        }
+
+        $fs->dumpFile($distDir . '/card', (string)$response->getContent());
+        $io->success(sprintf('dist/card écrit (%d octets).', \strlen((string)$response->getContent())));
+
+        $io->section('Rendu de la page card.vcf');
+        $request = Request::create('/card.vcf', 'GET');
+        $response = $this->kernel->handle($request);
+
+        if (200 !== $response->getStatusCode()) {
+            $io->error(sprintf('Le rendu a renvoyé un statut HTTP %d.', $response->getStatusCode()));
+
+            return Command::FAILURE;
+        }
+
+        $fs->dumpFile($distDir . '/card.vcf', (string)$response->getContent());
+        $io->success(sprintf('dist/card.vcf écrit (%d octets).', \strlen((string)$response->getContent())));
+
         $io->section('Copie des fichiers public/');
         $finder = (new Finder())
             ->in($publicDir)
