@@ -27,7 +27,7 @@ class BusinessCardController extends AbstractController
         $options = new QROptions();
         $options->version = Version::AUTO;
         $options->versionMin = 7;
-        $options->eccLevel = EccLevel::H;
+        $options->eccLevel = EccLevel::M;
         $options->outputInterface = QRGdImagePNG::class;
 
         $qrcode = new QRCode($options);
@@ -51,13 +51,13 @@ class BusinessCardController extends AbstractController
         $vcard += [
             'VERSION:4.0',
             'FN:' . $name,
-            'N:'.$lastName.';'.$firstName.';;;',
+            'N;CHARSET=utf-8:'.$lastName.';'.$firstName.';;;',
             'GENDER:M',
             'EMAIL;TYPE=work:' . $profile['email'],
             'TEL;TYPE=cell,voice:' . $profile['phone'],
             'URL;TYPE=website:https://jeremielibeau.fr/',
             'URL;TYPE=linkedin:' . $profile['linkedin'],
-            'TITLE:' . $profile['title'],
+            'TITLE;CHARSET=utf-8:' . $profile['title'],
             'ORG:' . $profile['company'],
         ];
         if ($withPhoto) {
