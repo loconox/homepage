@@ -1,0 +1,17 @@
+meta:
+    description: 'Tech Lead Freelance Full Remote — développement backend PHP/Symfony, architecture hexagonale, DevOps.'
+
+nav:
+    experiences: 'expériences'
+    skills: 'compétences'
+
+section:
+    services: 'Services'
+    experiences: 'Expériences'
+    skills: 'Compétences'
+    education: 'Formation'
+    contact: 'Contact'
+
+contact:
+    intro: 'Une question ou un projet ? Je réponds généralement sous 24h.'
+    appointment: 'Prendre rendez-vous'

@@ -1,5 +1,6 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
 parameters:
-    app.content:
+    app.content.fr:
         profile:
             name: 'Jérémie Libeau'
             title: "Développeur PHP | Tech Lead, spécialisé dans l'architecture logicielle"

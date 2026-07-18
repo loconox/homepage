@@ -21,10 +21,22 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 )]
 final class BuildStaticCommand extends Command
 {
+    /**
+     * Pages à pré-rendre : chemin de requête => fichier cible (relatif à dist/).
+     */
+    private const PAGES = [
+        '/' => 'index.html',
+        '/en/' => 'en/index.html',
+        '/card' => 'card',
+        '/card.vcf' => 'card.vcf',
+    ];
+
     public function __construct(
         private readonly HttpKernelInterface $kernel,
         #[Autowire(param: 'kernel.project_dir')]
         private readonly string              $projectDir,
+        #[Autowire('%env(DEFAULT_URI)%')]
+        private readonly string              $baseUri,
     )
     {
         parent::__construct();
@@ -44,44 +56,22 @@ final class BuildStaticCommand extends Command
         }
         $fs->mkdir($distDir);
 
-        $io->section('Rendu de la page d\'accueil');
-        $request = Request::create('/', 'GET');
-        $response = $this->kernel->handle($request);
+        $base = rtrim($this->baseUri, '/');
+        foreach (self::PAGES as $path => $target) {
+            $io->section(sprintf('Rendu de %s', $path));
+            $request = Request::create($base . $path, 'GET');
+            $response = $this->kernel->handle($request);
 
-        if (200 !== $response->getStatusCode()) {
-            $io->error(sprintf('Le rendu a renvoyé un statut HTTP %d.', $response->getStatusCode()));
+            if (200 !== $response->getStatusCode()) {
+                $io->error(sprintf('Le rendu de %s a renvoyé un statut HTTP %d.', $path, $response->getStatusCode()));
 
-            return Command::FAILURE;
+                return Command::FAILURE;
+            }
+
+            $content = (string) $response->getContent();
+            $fs->dumpFile($distDir . '/' . $target, $content);
+            $io->success(sprintf('dist/%s écrit (%d octets).', $target, \strlen($content)));
         }
-
-        $fs->dumpFile($distDir . '/index.html', (string)$response->getContent());
-        $io->success(sprintf('dist/index.html écrit (%d octets).', \strlen((string)$response->getContent())));
-
-        $io->section('Rendu de la page vcard');
-        $request = Request::create('/card', 'GET');
-        $response = $this->kernel->handle($request);
-
-        if (200 !== $response->getStatusCode()) {
-            $io->error(sprintf('Le rendu a renvoyé un statut HTTP %d.', $response->getStatusCode()));
-
-            return Command::FAILURE;
-        }
-
-        $fs->dumpFile($distDir . '/card', (string)$response->getContent());
-        $io->success(sprintf('dist/card écrit (%d octets).', \strlen((string)$response->getContent())));
-
-        $io->section('Rendu de la page card.vcf');
-        $request = Request::create('/card.vcf', 'GET');
-        $response = $this->kernel->handle($request);
-
-        if (200 !== $response->getStatusCode()) {
-            $io->error(sprintf('Le rendu a renvoyé un statut HTTP %d.', $response->getStatusCode()));
-
-            return Command::FAILURE;
-        }
-
-        $fs->dumpFile($distDir . '/card.vcf', (string)$response->getContent());
-        $io->success(sprintf('dist/card.vcf écrit (%d octets).', \strlen((string)$response->getContent())));
 
         $io->section('Copie des fichiers public/');
         $finder = (new Finder())

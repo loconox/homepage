@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{% block description %}Tech Lead Freelance Full Remote — développement backend PHP/Symfony, architecture hexagonale, DevOps.{% endblock %}">
+        <meta name="description" content="{% block description %}{{ 'meta.description'|trans }}{% endblock %}">
         <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
         <meta property="og:description" content="{{ block('description') }}">
         <meta property="og:type" content="website">
+        <link rel="alternate" hreflang="fr" href="{{ url('home', {_locale: 'fr'}) }}">
+        <link rel="alternate" hreflang="en" href="{{ url('home', {_locale: 'en'}) }}">
+        <link rel="alternate" hreflang="x-default" href="{{ url('home', {_locale: 'fr'}) }}">
         <title>{% block title %}{{ content.profile.name }} — {{ content.profile.title }}{% endblock %}</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
