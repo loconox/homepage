@@ -15,7 +15,11 @@
                             ./{{ (loop.index)|format('%02d') }}
                         </p>
                         <p class="text-xs text-gray-500 leading-relaxed">
-                            {{ exp.start }}<br class="hidden md:block"> — {{ exp.end }}
+                            {% if exp.end is defined %}
+                                {{ exp.start }}<br class="hidden md:block"> — {{ exp.end }}
+                            {% else %}
+                                {{ exp.start }}
+                            {% endif %}
                         </p>
                     </div>
                     <div>
@@ -23,9 +27,11 @@
                             <h3 class="font-semibold text-gray-100 text-sm">{{ exp.role }}</h3>
                             <span class="text-cyan-400 text-xs">{{ exp.company }}</span>
                             {% if exp.companyType %}
+                                {% for companyType in exp.companyType|split(',') %}
                                 <span class="px-1.5 py-0.5 text-[10px] uppercase tracking-wider border border-gray-700 text-gray-500">
-                                    {{ exp.companyType }}
+                                    {{ companyType }}
                                 </span>
+                                {% endfor %}
                             {% endif %}
                         </div>
                         <ul class="space-y-1 mb-3">

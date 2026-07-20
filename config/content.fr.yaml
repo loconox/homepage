@@ -30,6 +30,17 @@ parameters:
               icon: 'server'
 
         experiences:
+            - company: 'Astrolabe'
+              companyType: 'CAE'
+              role: 'Développeur - freelance'
+              start: 'Avril 2026'
+              highlights:
+                  - 'Développement backend PHP (Symfony / API Platform)'
+                  - "Design d'architecture"
+                  - 'Accompagnement technique'
+                  - 'Amélioration de la qualité logicielle'
+              technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit']
+
             - company: 'EGERIE'
               companyType: 'Scale-up'
               role: 'Tech Lead'
