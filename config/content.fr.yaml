@@ -11,7 +11,7 @@ parameters:
             linkedin: 'https://www.linkedin.com/in/j%%C3%%A9r%%C3%%A9mie-libeau-1553b4257/'
             github: 'https://github.com/loconox'
             appointment: 'https://nuage.astrolabe.coop/apps/calendar/appointment/fm8qjEyosz9c'
-            cv_url: 'https://github.com/loconox/latexcv/releases/download/latest/cv_jeremie_libeau.pdf'
+            cv_url: 'https://github.com/loconox/latexcv/releases/download/latest/cv_jeremie_libeau_fr.pdf'
             photo: '/images/profile.jpg'
             availability: 'Disponible'
             quote:
