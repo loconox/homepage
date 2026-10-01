@@ -3,7 +3,7 @@ parameters:
     app.content.en:
         profile:
             name: 'Jérémie Libeau'
-            title: 'PHP Developer | Tech Lead, specialized in software architecture'
+            title: 'PHP fullstack Developer | Tech Lead, specialized in software architecture'
             bio: 'I support teams in their technical decisions, the design of scalable APIs, and improving the quality of their applications.'
             email: 'jeremie.libeau@astrolabe.coop'
             phone: '+33 6 87 46 32 41'
@@ -32,14 +32,14 @@ parameters:
         experiences:
             - company: 'Astrolabe'
               companyType: 'CAE'
-              role: 'Developer - freelance'
+              role: 'Developer fullstack - freelance'
               start: 'Apr 2026'
               highlights:
                   - 'PHP backend development (Symfony / API Platform)'
                   - 'Architecture design'
                   - 'Technical guidance'
                   - 'Software quality improvement'
-              technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit']
+              technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit', 'React', 'Docker']
 
             - company: 'EGERIE'
               companyType: 'Scale-up'

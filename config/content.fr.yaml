@@ -3,7 +3,7 @@ parameters:
     app.content.fr:
         profile:
             name: 'Jérémie Libeau'
-            title: "Développeur PHP | Tech Lead, spécialisé dans l'architecture logicielle"
+            title: "Développeur PHP fullstack | Tech Lead, spécialisé dans l'architecture logicielle"
             bio: "J'accompagne les équipes dans leurs choix techniques, la conception d'API scallable et la montée en qualité de leurs applications."
             email: 'jeremie.libeau@astrolabe.coop'
             phone: '+33 6 87 46 32 41'
@@ -32,14 +32,14 @@ parameters:
         experiences:
             - company: 'Astrolabe'
               companyType: 'CAE'
-              role: 'Développeur - freelance'
+              role: 'Développeur fullstack - freelance'
               start: 'Avril 2026'
               highlights:
                   - 'Développement backend PHP (Symfony / API Platform)'
                   - "Design d'architecture"
                   - 'Accompagnement technique'
                   - 'Amélioration de la qualité logicielle'
-              technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit']
+              technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit', 'React', 'Docker']
 
             - company: 'EGERIE'
               companyType: 'Scale-up'
