@@ -1,7 +1,7 @@
 # Runs the self-contained image built by `make build` on the server.
 # One container serves the static site (public/) and the live /mcp endpoint.
 # It listens on plain HTTP; the host's existing Caddy terminates TLS and
-# reverse-proxies to 127.0.0.1:8080 (see DEPLOY.md).
+# reverse-proxies to host.docker.internal:APP_LOCAL_PORT (see DEPLOY.md).
 #
 # The server must hold a .env.local providing at least APP_SECRET.
 services:
@@ -14,6 +14,6 @@ services:
       APP_ENV: prod
       APP_DEBUG: "0"
     ports:
-      # Plain HTTP, bound to localhost only: the host's Caddy reverse-proxies here.
+      # Plain HTTP on all interfaces (needed for host.docker.internal access).
       # Configure via APP_LOCAL_PORT env var (default: 8080).
-      - "127.0.0.1:${APP_LOCAL_PORT:-8080}:80"
+      - "${APP_LOCAL_PORT:-8080}:80"
