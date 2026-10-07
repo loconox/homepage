@@ -1,0 +1,15 @@
+# Test-only overrides. Application use cases have no runtime consumer yet (the
+# MCP adapter comes later), so the container would remove these private
+# services. Re-declaring them publicly (DTOs excluded) lets functional tests
+# fetch them from the test container.
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\Profile\Application\EvaluateJobFit\EvaluateJobFit: ~
+
+    # MCP tools, so functional tests can invoke them directly (fully wired).
+    App\Mcp\:
+        resource: '../src/Mcp/'

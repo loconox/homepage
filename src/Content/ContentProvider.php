@@ -27,36 +27,57 @@ final class ContentProvider
     }
 
     /** @return array<string, mixed> */
-    public function getProfile(): array
+    public function getProfile(?string $locale = null): array
     {
-        return $this->forLocale()['profile'];
+        return $this->forLocale($locale)['profile'];
+    }
+
+    /** @return array<string, mixed> */
+    public function getJob(?string $locale = null): array
+    {
+        return $this->forLocale($locale)['job'];
     }
 
     /** @return array<int, array<string, mixed>> */
-    public function getServices(): array
+    public function getServices(?string $locale = null): array
     {
-        return $this->forLocale()['services'];
+        return $this->forLocale($locale)['services'];
     }
 
     /** @return array<int, array<string, mixed>> */
-    public function getExperiences(): array
+    public function getExperiences(?string $locale = null): array
     {
-        return $this->forLocale()['experiences'];
+        return $this->forLocale($locale)['experiences'];
     }
 
     /** @return array<int, array<string, mixed>> */
-    public function getSkills(): array
+    public function getSkills(?string $locale = null): array
     {
-        return $this->forLocale()['skills'];
+        return $this->forLocale($locale)['skills'];
     }
 
     /** @return array<int, array<string, mixed>> */
-    public function getEducation(): array
+    public function getEducation(?string $locale = null): array
     {
-        return $this->forLocale()['education'];
+        return $this->forLocale($locale)['education'];
     }
 
     /**
+     * Locales for which content is available (e.g. ['fr', 'en']).
+     *
+     * @return list<string>
+     */
+    public function getLocales(): array
+    {
+        return array_keys($this->content);
+    }
+
+    /**
+     * Resolves the content bundle for the given locale. When no locale is passed
+     * it falls back to the current request locale, then to the default locale —
+     * this keeps the request-driven rendering of the website working unchanged,
+     * while letting request-less callers (CLI, MCP) select a locale explicitly.
+     *
      * @return array{
      *     profile: array<string, mixed>,
      *     services: array<int, array<string, mixed>>,
@@ -65,9 +86,9 @@ final class ContentProvider
      *     education: array<int, array<string, mixed>>
      * }
      */
-    private function forLocale(): array
+    private function forLocale(?string $locale = null): array
     {
-        $locale = $this->requestStack->getCurrentRequest()?->getLocale() ?? self::DEFAULT_LOCALE;
+        $locale ??= $this->requestStack->getCurrentRequest()?->getLocale() ?? self::DEFAULT_LOCALE;
 
         return $this->content[$locale] ?? $this->content[self::DEFAULT_LOCALE];
     }

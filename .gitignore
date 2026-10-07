@@ -17,6 +17,12 @@
 # Static build output
 /dist/
 
+# Pre-rendered pages dumped into public/ for the FrankenPHP deployment
+/public/index.html
+/public/en/
+/public/card
+/public/card.vcf
+
 # IDE
 /.idea/
 
@@ -24,3 +30,8 @@
 /deploy-deploy-2.log
 /github_deploy
 /github_deploy.pub
+
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###

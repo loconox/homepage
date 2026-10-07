@@ -9,7 +9,7 @@
 
         <div class="space-y-0">
             {% for exp in content.experiences %}
-                <div class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 border-b border-gray-800/50 last:border-0 group">
+                <div id="experience-{{ exp.id }}" class="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 border-b border-gray-800/50 last:border-0 group scroll-mt-24">
                     <div class="md:pt-0.5">
                         <p class="text-xs text-gray-600 mb-1 group-hover:text-cyan-400/60 transition-colors">
                             ./{{ (loop.index)|format('%02d') }}

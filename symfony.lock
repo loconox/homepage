@@ -1,4 +1,40 @@
 {
+    "doctrine/deprecations": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "fdd756167454623e21f1d769c5b814b243782a67"
+        }
+    },
+    "php-http/discovery": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.18",
+            "ref": "f45b5dd173a27873ab19f5e3180b2f661c21de02"
+        },
+        "files": [
+            "config/packages/http_discovery.yaml"
+        ]
+    },
+    "phpunit/phpunit": {
+        "version": "13.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "11.1",
+            "ref": "ca0bc067abfb40a8de1b2561b96cbfc2b833c314"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.dist.xml",
+            "tests/bootstrap.php",
+            "bin/phpunit"
+        ]
+    },
     "symfony/asset-mapper": {
         "version": "7.4",
         "recipe": {
@@ -59,6 +95,21 @@
             ".editorconfig"
         ]
     },
+    "symfony/mcp-bundle": {
+        "version": "v0.14.1"
+    },
+    "symfony/property-info": {
+        "version": "7.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "7.3",
+            "ref": "dae70df71978ae9226ae915ffd5fad817f5ca1f7"
+        },
+        "files": [
+            "config/packages/property_info.yaml"
+        ]
+    },
     "symfony/routing": {
         "version": "7.4",
         "recipe": {
@@ -97,6 +148,15 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "7.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "7.0",
+            "ref": "0df5844274d871b37fc3816c57a768ffc60a43a5"
+        }
     },
     "symfonycasts/tailwind-bundle": {
         "version": "0.13",

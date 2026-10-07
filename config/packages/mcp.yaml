@@ -1,0 +1,11 @@
+# config/packages/mcp.yaml
+mcp:
+    servers:
+        default:
+            name: 'profile-mcp'
+            transports:
+                stdio: true
+                http: true
+            http:
+                path: /mcp
+            registry: '*'         # expose every registered capability

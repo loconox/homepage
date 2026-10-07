@@ -11,37 +11,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          tools: composer:v2
-          coverage: none
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress --verbose
-        env:
-            APP_ENV: prod
-            COMPOSER_PROCESS_TIMEOUT: 600
-
-      - name: Build
-        run: make prod
-
-      - name: Deploy via scp
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
-          SSH_OPTS="-i ~/.ssh/deploy_key"
-          SSH_DEST="${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}"
-          TARGET="${{ secrets.SSH_TARGET_PATH }}"
-          ssh $SSH_OPTS "$SSH_DEST" "rm -rf '$TARGET'/* '$TARGET'/.[!.]* '$TARGET'/..?* 2>/dev/null; mkdir -p '$TARGET'"
-          scp $SSH_OPTS -r dist/. "$SSH_DEST:$TARGET/"
+
+      # Sync the source to the server (build context for the Docker image).
+      # Server-only files (secrets, docker volumes, previous build) are preserved.
+      - name: Sync code to server
+        run: |
+            ssh -i ~/.ssh/deploy_key "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+              "cd '${{ secrets.SSH_TARGET_PATH }}' && git pull"
+
+      # Build the image and (re)start the container, both on the server.
+      - name: Build & deploy on server
+        run: |
+          ssh -i ~/.ssh/deploy_key "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "cd '${{ secrets.SSH_TARGET_PATH }}' && make build && make deploy"

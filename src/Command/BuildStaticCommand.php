@@ -7,6 +7,7 @@ namespace App\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -42,16 +43,37 @@ final class BuildStaticCommand extends Command
         parent::__construct();
     }
 
+    protected function configure(): void
+    {
+        $this->addOption(
+            'output',
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Dossier de sortie, relatif à la racine du projet. Utiliser "public" pour un déploiement FrankenPHP (statique + /mcp).',
+            'dist',
+        );
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $fs = new Filesystem();
 
-        $distDir = $this->projectDir . '/dist';
+        $outputName = trim((string) $input->getOption('output'), '/');
+        $distDir = $this->projectDir . '/' . $outputName;
         $publicDir = $this->projectDir . '/public';
 
-        $io->section('Préparation du dossier dist/');
-        if ($fs->exists($distDir)) {
+        // When rendering straight into public/ (FrankenPHP deployment), the
+        // directory already holds index.php and the compiled assets, so we must
+        // NOT wipe it — we only refresh the generated pages and skip the mirror.
+        $intoPublic = $distDir === $publicDir;
+
+        $io->section(sprintf('Préparation du dossier %s/', $outputName));
+        if ($intoPublic) {
+            foreach (self::PAGES as $target) {
+                $fs->remove($distDir . '/' . $target);
+            }
+        } elseif ($fs->exists($distDir)) {
             $fs->remove($distDir);
         }
         $fs->mkdir($distDir);
@@ -71,6 +93,12 @@ final class BuildStaticCommand extends Command
             $content = (string) $response->getContent();
             $fs->dumpFile($distDir . '/' . $target, $content);
             $io->success(sprintf('dist/%s écrit (%d octets).', $target, \strlen($content)));
+        }
+
+        if ($intoPublic) {
+            $io->success('Build statique terminé dans ' . $distDir);
+
+            return Command::SUCCESS;
         }
 
         $io->section('Copie des fichiers public/');

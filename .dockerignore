@@ -1,0 +1,26 @@
+# Pulled fresh / generated inside the image
+/vendor
+/var
+/dist
+/public/assets
+/public/bundles
+/public/index.html
+/public/en
+/public/card
+/public/card.vcf
+
+# Not needed at build/runtime
+/.git
+/.github
+/.idea
+/ember
+/node_modules
+/assets/vendor
+/.phpunit.cache
+/tests
+/phpunit.dist.xml
+/phpunit.xml
+
+# Local secrets must come from the server, never the image
+/.env.local
+/.env.*.local

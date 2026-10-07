@@ -28,5 +28,7 @@ services:
                 fr: '%app.content.fr%'
                 en: '%app.content.en%'
 
+    App\Profile\Domain\ProfileRepositoryInterface: '@App\Profile\Infrastructure\ContentProfileRepository'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

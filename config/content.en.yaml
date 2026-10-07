@@ -1,11 +1,20 @@
 # yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
 parameters:
     app.content.en:
+        job:
+            target_role:
+                - "Backend Developer"
+                - "Fullstack Developer"
+                - "Tech Lead"
+            preferences:
+                contract_type: ['CDI']
+                location: ['remote', 'Paris', 'Rennes', 'Lannion']
         profile:
+            id: 'jeremie-libeau'
             name: 'Jérémie Libeau'
             title: 'PHP fullstack Developer | Tech Lead, specialized in software architecture'
             bio: 'I support teams in their technical decisions, the design of scalable APIs, and improving the quality of their applications.'
-            email: 'jeremie.libeau@astrolabe.coop'
+            email: 'job@jeremielibeau.fr'
             phone: '+33 6 87 46 32 41'
             company: 'Astrolabe'
             linkedin: 'https://www.linkedin.com/in/j%%C3%%A9r%%C3%%A9mie-libeau-1553b4257/'
@@ -30,7 +39,8 @@ parameters:
               icon: 'server'
 
         experiences:
-            - company: 'Astrolabe'
+            - id: 'astrolabe'
+              company: 'Astrolabe'
               companyType: 'CAE'
               role: 'Developer fullstack - freelance'
               start: 'Apr 2026'
@@ -41,7 +51,8 @@ parameters:
                   - 'Software quality improvement'
               technologies: ['PHP', 'Symfony', 'API Platform', 'PHPUnit', 'React', 'Docker']
 
-            - company: 'EGERIE'
+            - id: 'egerie'
+              company: 'EGERIE'
               companyType: 'Scale-up'
               role: 'Tech Lead'
               start: 'Mar 2023'
@@ -54,7 +65,8 @@ parameters:
                   - 'Promotion of clean code and SOLID best practices'
               technologies: ['PHP', 'Symfony', 'Silex', 'API Platform', 'PHPUnit', 'React']
 
-            - company: 'Symetri'
+            - id: 'symetri'
+              company: 'Symetri'
               companyType: 'SME'
               role: 'Fullstack Developer / DevOps'
               start: 'Jan 2018'
@@ -67,7 +79,8 @@ parameters:
                   - 'Administration of the OBS cloud environment'
               technologies: ['PHP', 'Symfony', 'Zend', 'Angular', 'Docker', 'Kubernetes', 'Jenkins', 'GitLab', 'MSSql']
 
-            - company: 'Avenue du Web'
+            - id: 'avenue-du-web'
+              company: 'Avenue du Web'
               companyType: 'Small business'
               role: 'Fullstack Developer'
               start: 'May 2014'
@@ -80,7 +93,8 @@ parameters:
                   - 'Setup of a Jenkins continuous integration platform'
               technologies: ['PHP', 'Symfony', 'MySQL', 'JavaScript', 'WebSocket', 'Jenkins']
 
-            - company: 'Outscale'
+            - id: 'outscale'
+              company: 'Outscale'
               companyType: 'Start-up'
               role: 'Fullstack Developer'
               start: 'Jun 2013'
@@ -92,7 +106,8 @@ parameters:
                   - 'Occasional IT system administration'
               technologies: ['PHP', 'SCRUM']
 
-            - company: 'Ubisoft'
+            - id: 'ubisoft'
+              company: 'Ubisoft'
               companyType: 'Enterprise'
               role: 'Data Manager'
               start: 'Aug 2011'
@@ -104,7 +119,8 @@ parameters:
                   - 'Management of the documentation space'
               technologies: []
 
-            - company: 'Siemens Mobility'
+            - id: 'siemens-mobility'
+              company: 'Siemens Mobility'
               companyType: 'Enterprise'
               role: 'Unix/Linux Systems Administrator'
               start: 'Oct 2007'

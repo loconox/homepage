@@ -1,0 +1,42 @@
+# FrankenPHP deployment (behind the host's existing Caddy reverse proxy)
+# -----------------------------------------------------------------------
+# One server serves BOTH:
+#   - the pre-rendered static site dumped into public/ (fast, no PHP per request)
+#   - the live /mcp endpoint handled by Symfony (the MCP server)
+#
+# How it works: `php_server` tries to serve an existing file first; only requests
+# without a matching file fall through to index.php (Symfony). Since the whole
+# site is pre-rendered into public/, only /mcp (and anything dynamic) reaches PHP.
+# `php_server` *executes* PHP, so index.php is never served as source.
+#
+# TLS is terminated by the host's Caddy, so this instance listens on plain HTTP
+# (`:80`) with no ACME. The host proxies to it (see DEPLOY.md).
+
+{
+	frankenphp
+}
+
+:80 {
+	root * /app/public
+	encode zstd br gzip
+
+	php_server {
+		# Static pages win over the PHP front controller; /mcp has no file → index.php.
+		try_files {path} {path}/index.html index.php
+
+		# --- Optional: Symfony worker mode (keeps the kernel hot for /mcp) ---
+		# Requires: composer require runtime/frankenphp-symfony
+		# and APP_RUNTIME=Runtime\FrankenPhpSymfony\Runtime
+		# worker ./public/index.php
+	}
+
+	header {
+		-Server
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Content-Type-Options "nosniff"
+	}
+
+	log {
+		output stdout
+	}
+}

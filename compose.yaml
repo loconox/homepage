@@ -1,0 +1,18 @@
+# Runs the self-contained image built by `make build` on the server.
+# One container serves the static site (public/) and the live /mcp endpoint.
+# It listens on plain HTTP; the host's existing Caddy terminates TLS and
+# reverse-proxies to 127.0.0.1:8080 (see DEPLOY.md).
+#
+# The server must hold a .env.local providing at least APP_SECRET.
+services:
+  app:
+    image: ${IMAGE:-homepage:latest}
+    restart: unless-stopped
+    env_file:
+      - .env.local            # APP_SECRET (and any runtime overrides)
+    environment:
+      APP_ENV: prod
+      APP_DEBUG: "0"
+    ports:
+      # Plain HTTP, bound to localhost only: the host's Caddy reverse-proxies here.
+      - "127.0.0.1:8080:80"
