@@ -1,6 +1,9 @@
 
 IMAGE ?= homepage:latest
 
+dev:
+	php -S 127.0.0.1:8000 -t public/
+
 # Build the self-contained Docker image (runs on the server over SSH from CI).
 build:
 	docker build -t $(IMAGE) .
