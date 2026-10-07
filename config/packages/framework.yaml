@@ -7,9 +7,6 @@ framework:
     trusted_proxies: 'private_ranges'
     trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port']
 
-    # Allow requests from localhost, 127.0.0.1, and docker host
-    trusted_hosts: ['^localhost$', '^127\.0\.0\.1$', '^127\.0\.0\.1:\d+$', '^host\.docker\.internal$', '^jeremielibeau\.fr$']
-
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 

@@ -8,4 +8,6 @@ mcp:
                 http: true
             http:
                 path: /mcp
+                # DNS rebinding protection: allow our hosts (SDK default is localhost only).
+                allowed_hosts: ['localhost', '127.0.0.1', 'host.docker.internal', 'jeremielibeau.fr']
             registry: '*'         # expose every registered capability
