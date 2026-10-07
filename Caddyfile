@@ -10,7 +10,8 @@
 # `php_server` *executes* PHP, so index.php is never served as source.
 #
 # TLS is terminated by the host's Caddy, so this instance listens on plain HTTP
-# (`:80`) with no ACME. The host proxies to it (see DEPLOY.md).
+# (`:80`) with no ACME. The host reverse-proxies to it via the local port
+# (default 127.0.0.1:8080, configurable via APP_LOCAL_PORT env var; see DEPLOY.md).
 
 {
 	frankenphp

@@ -6,8 +6,9 @@ build:
 	docker build -t $(IMAGE) .
 
 # (Re)start the container from the freshly built image.
+# Reads APP_LOCAL_PORT (and other vars) from .env.local if present.
 deploy:
-	IMAGE=$(IMAGE) docker compose up -d --remove-orphans
+	bash -c 'set -a; [ -f .env.local ] && . .env.local; set +a; IMAGE=$(IMAGE) docker compose up -d --remove-orphans'
 
 # XDEBUG_MODE=off keeps the suite from stalling when a step-debug listener
 # (e.g. the IDE) is active, and makes it run noticeably faster.
