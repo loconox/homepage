@@ -18,6 +18,7 @@
         "guzzlehttp/psr7": "^3.1",
         "php-http/discovery": "^1.20",
         "php-llm/mcp-sdk": "^0.1.0",
+        "php-mqtt/client": "^2.3",
         "symfony/asset": "7.4.*",
         "symfony/asset-mapper": "7.4.*",
         "symfony/console": "7.4.*",
